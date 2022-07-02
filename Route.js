@@ -6,9 +6,9 @@ import con from './index.js'
 const router = express.Router()
 const app = express()
 
-router.get("/",(req,res)=>{
-  res.sendFile(path.join(path.dirname(fileURLToPath(import.meta.url)),"Client/build/index.html"));
-});
+// router.get("/",(req,res)=>{
+//   res.sendFile(path.join(path.dirname(fileURLToPath(import.meta.url)),"Client/build/index.html"));
+// });
 
 router.get('/gloves', (req, res) => {
   con.query('SELECT * FROM gloves', (err, row, result) => {

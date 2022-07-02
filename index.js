@@ -41,8 +41,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-// app.use('/',router)
+app.use('/',router)
 
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(path.dirname(fileURLToPath(import.meta.url)),"Client/build/index.html"));
+})
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`)
 })
