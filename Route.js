@@ -10,19 +10,19 @@ const app = express()
 //   res.sendFile(path.join(path.dirname(fileURLToPath(import.meta.url)),"Client/build/index.html"));
 // });
 
-router.get('/gloves', (req, res) => {
+app.get('/gloves', (req, res) => {
   con.query('SELECT * FROM gloves', (err, row, result) => {
     if (err) throw err;
     res.send(row);
   })
 });
-router.get('/doctor', (req, res) => {
+app.get('/doctor', (req, res) => {
   con.query('SELECT * FROM doctors', (err, row, result) => {
     if (err) throw err;
     res.send(row);
   })
 });
-router.get('/login', (req, res) => {
+app.get('/login', (req, res) => {
   console.log("This is backend api...");
   try {
           con.query('SELECT * FROM login_details', (err, row, result) => {
@@ -33,7 +33,7 @@ router.get('/login', (req, res) => {
   }
 });
 
-router.post('/login/server', async (req, res) => {
+app.post('/login/server', async (req, res) => {
   const id = req.body.Uid;
   const h = req.body.h;
   const selected = req.body.selected;
@@ -51,7 +51,7 @@ router.post('/login/server', async (req, res) => {
     console.log(error)
   }
 });
-router.get('/get', (req, res) => {
+app.get('/get', (req, res) => {
   con.query('SELECT * FROM post_api', (err, row, result) => {
     if (err) throw err;
     res.json(row);
