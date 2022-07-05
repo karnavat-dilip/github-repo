@@ -3,26 +3,26 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import con from './index.js'
-const router = express.Router()
+const router =new express.Router()
 const app = express()
 
 // router.get("/",(req,res)=>{
 //   res.sendFile(path.join(path.dirname(fileURLToPath(import.meta.url)),"Client/build/index.html"));
 // });
 
-app.get('/gloves', (req, res) => {
+router.get('/gloves', (req, res) => {
   con.query('SELECT * FROM gloves', (err, row, result) => {
     if (err) throw err;
     res.send(row);
   })
 });
-app.get('/doctor', (req, res) => {
+router.get('/doctor', (req, res) => {
   con.query('SELECT * FROM doctors', (err, row, result) => {
     if (err) throw err;
     res.send(row);
   })
 });
-app.get('/login', (req, res) => {
+router.get('/login', (req, res) => {
   console.log("This is backend api...");
   try {
           con.query('SELECT * FROM login_details', (err, row, result) => {
@@ -33,7 +33,7 @@ app.get('/login', (req, res) => {
   }
 });
 
-app.post('/login/server', async (req, res) => {
+router.post('/login/server', async (req, res) => {
   const id = req.body.Uid;
   const h = req.body.h;
   const selected = req.body.selected;
@@ -51,7 +51,7 @@ app.post('/login/server', async (req, res) => {
     console.log(error)
   }
 });
-app.get('/get', (req, res) => {
+router.get('/get', (req, res) => {
   con.query('SELECT * FROM post_api', (err, row, result) => {
     if (err) throw err;
     res.json(row);

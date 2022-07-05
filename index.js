@@ -24,7 +24,7 @@ const port = process.env.PORT || 9898;
 const devconfig=`postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`
 const proconfig=process.env.DATABASE_URL;
 const con = new Pool({
-  connectionString:process.env.NODE_ENV==="production"?proconfig:devconfig
+  connectionString:process.env.NODE_ENV==="production"?proconfig:devconfig,
   // ssl:true
 })
 con.connect(function (err) {
@@ -32,19 +32,19 @@ con.connect(function (err) {
   console.log("Connected successfully!");
 });
 if (process.env.NODE_ENV === "production") {
-  app.use('/',express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), "Client/build")));
+  app.use('/',express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), "/Client/build")));
 }
 // app.get("*",(req,res)=>{
-//   res.sendFile(path.join(path.dirname(fileURLToPath(import.meta.url)),"Client/build/index.html"));
+//   res.sendFile(path.join(path.dirname(fileURLToPath(import.meta.url)),"/Client/build/index.html"));
 // })
 console.log('!!!',path.join(path.dirname(fileURLToPath(import.meta.url)), "Client/build"));
 // console.log(__dirname);
-app.use(cors());
+app.use(cors({origin:'http://localhost:3000', credentials:true}));
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
 app.use(express.json())
 // app.use(express.urlencoded({ extended: true }))
-// app.use('/',router)
+app.use(router)
 
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`)

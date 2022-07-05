@@ -16,8 +16,9 @@ export const Loginpage = () => {
     try {
         !user && fetch('/login',{
             method:"GET",
+            credentials:'include',
             headers:{"Content-Type": "application/json"},
-            // body:JSON.stringify(user)
+            body:JSON.stringify(user)
         }).then((res) => {
                 res.json().then((d) => {
                     setuser(d);
