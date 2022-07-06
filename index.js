@@ -25,7 +25,7 @@ const devconfig=`postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@
 const proconfig=process.env.DATABASE_URL;
 const con = new Pool({
   connectionString:process.env.NODE_ENV==="production"?proconfig:devconfig,
-  // ssl:true
+  ssl:true
 })
 con.connect(function (err) {
   if (err) throw err;
