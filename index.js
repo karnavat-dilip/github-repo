@@ -10,7 +10,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 const Pool = pg.Pool
 const app = express()
-const port = process.env.PORT || 9898;
+const port = process.env.PORT;
 
 // var con = new Pool({
 //   host: "localhost",
