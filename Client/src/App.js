@@ -9,9 +9,9 @@ function App() {
   return (
     <>
         <Switch>
-          <Route exact path="/" component={Loginpage} />
-          <Route exact path="/home" component={Submit_Page} />
-          <Route exact path="/detail" component={Anotherpage} />
+          <Route exact path="https://pern-app1.herokuapp.com/" component={Loginpage} />
+          <Route exact path="https://pern-app1.herokuapp.com/home" component={Submit_Page} />
+          <Route exact path="https://pern-app1.herokuapp.com/detail" component={Anotherpage} />
         </Switch>
     </>
   );
