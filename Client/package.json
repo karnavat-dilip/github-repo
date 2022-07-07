@@ -6,7 +6,7 @@
     "node": "14.17.2",
     "npm": "6.14.13"
   },
-  "proxy": "http://localhost:9898/",
+  "proxy": "http://localhost:1010/",
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",

@@ -25,7 +25,10 @@ const devconfig=`postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@
 const proconfig=process.env.DATABASE_URL;
 const con = new Pool({
   connectionString:process.env.NODE_ENV==="production"?proconfig:devconfig,
-  ssl:true
+  // ssl:{
+  //   rejectUnauthorized:false
+  // }
+  // ssl: process.env.DATABASE_URL ? true : false
 })
 con.connect(function (err) {
   if (err) throw err;
@@ -39,7 +42,7 @@ if (process.env.NODE_ENV === "production") {
 }
 console.log('!!!',path.join(path.dirname(fileURLToPath(import.meta.url)), "Client/build"));
 // console.log(__dirname);
-app.use(cors({origin:'http://localhost:3000', credentials:true}));
+app.use(cors({origin:'http://localhost:1010/', credentials:true}));
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
 app.use(express.json())
