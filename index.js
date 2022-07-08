@@ -43,10 +43,10 @@ if (process.env.NODE_ENV === "production") {
 console.log('!!!',path.join(path.dirname(fileURLToPath(import.meta.url)), "Client/build"));
 // console.log(__dirname);
 app.use(cors({origin:'http://localhost:1010/', credentials:true}));
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.json())
-// app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 app.use("/", router)
 
 app.listen(port, () => {
