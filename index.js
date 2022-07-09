@@ -36,13 +36,13 @@ con.connect(function (err) {
 });
 if (process.env.NODE_ENV === "production") {
   app.use(express.static());
-  app.get("/",(req,res)=>{
+  app.get("*",(req,res)=>{
     res.sendFile(path.join(path.dirname(fileURLToPath(import.meta.url)),"Client/build/index.html"));
   })
 }
 console.log('!!!',path.join(path.dirname(fileURLToPath(import.meta.url)), "Client/build"));
 // console.log(__dirname);
-app.use(cors({origin:'http://localhost:3000/', credentials:true}));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json())
