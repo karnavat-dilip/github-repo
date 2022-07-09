@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser';
 import router from './Route.js';
-import mysql from 'mysql'
+// import mysql from 'mysql'
 import path from 'path'
 import {fileURLToPath} from 'url'
 import pg from 'pg';
