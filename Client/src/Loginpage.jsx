@@ -14,7 +14,7 @@ export const Loginpage = () => {
     const [passw, setpassw] = useState()
 
     try {
-        !user && fetch('http://localhost:9898/login',{
+        !user && fetch('/login',{
             method:"GET",
             // credentials:'include',
             headers:{"Content-Type": "application/json"},

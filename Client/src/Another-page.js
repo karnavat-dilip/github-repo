@@ -9,7 +9,7 @@ export const Anotherpage = () => {
 
     const [getdata, setgetdata] = useState();
     try {
-        !getdata && fetch('http://localhost:9898/get').then((rs) => {
+        !getdata && fetch('/get').then((rs) => {
              rs.json().then((data) => {
                 setgetdata(data)
             });
