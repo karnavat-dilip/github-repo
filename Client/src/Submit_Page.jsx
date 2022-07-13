@@ -13,13 +13,13 @@ export const Submit_Page = () => {
     // let [post, setpost] = useState("")
 
     // console.log(gloves)
-    !doctor && fetch('/doctor').then((rs) => {
+    !doctor && fetch('http://localhost:9898/doctor').then((rs) => {
         rs.json().then((data) => {
             setdoctor(data);
         });
     });
 
-    !gloves && fetch('/gloves').then((res) => {
+    !gloves && fetch('http://localhost:9898/gloves').then((res) => {
         res.json().then((d) => {
             setgloves(d);
         });
@@ -118,7 +118,7 @@ export const Submit_Page = () => {
             alert("does not selected...")
         } else {
             try {
-                await Axios.post("/login/server", {
+                await Axios.post("http://localhost:9898/login/server", {
                     Uid: localStorage.getItem('id') || localStorage.getItem('id1'),
                     h: localStorage.getItem('h'),
                     selected: localStorage.getItem('selected'),

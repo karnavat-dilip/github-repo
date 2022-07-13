@@ -14,11 +14,11 @@ export const Loginpage = () => {
     const [passw, setpassw] = useState()
 
     try {
-        !user && fetch('/login',{
+        !user && fetch('http://localhost:9898/login',{
             method:"GET",
-            credentials:'include',
+            // credentials:'include',
             headers:{"Content-Type": "application/json"},
-            body:JSON.stringify(user)
+            // body:JSON.stringify(user)
         }).then((res) => {
                 res.json().then((d) => {
                     setuser(d);

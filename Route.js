@@ -43,7 +43,7 @@ router.post('/login/server', async (req, res) => {
   const G_items = req.body.G_items;
   const location = req.body.location;
   try {
-    await con.query('INSERT INTO post_api (id,h,selected,G_name,G_size,portno,Company_name,location) VALUES (?,?,?,?,?,?,?,?)', [id, h, selected, G_name, G_size, portno, G_items, location], (err, result) => {
+    await con.query('INSERT INTO post_api (id,h,selected,G_name,G_size,portno,Company_name,location) VALUES (?,?,?,?,?,?,?,?)' [id, h, selected, G_name, G_size, portno, G_items, location], (err, result) => {
       if (err) throw err;
       console.log("success...");
     })
@@ -54,7 +54,7 @@ router.post('/login/server', async (req, res) => {
 router.get('/get', (req, res) => {
   con.query('SELECT * FROM post_api', (err, row, result) => {
     if (err) throw err;
-    res.json(row);
+    res.send(row);
   });
 });
 export default router;
